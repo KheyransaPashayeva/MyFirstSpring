@@ -23,7 +23,7 @@ public class LibrafController {
     public void createLibraf(@RequestBody LibrafRequestDto dto) {
         librafService.addLibraf(dto);
     }
-    @GetMapping
+    @GetMapping("/all")
     public List<LibrafResponseDto> getAllLibraf()  {
         return librafService.getAllLibraf();
     }

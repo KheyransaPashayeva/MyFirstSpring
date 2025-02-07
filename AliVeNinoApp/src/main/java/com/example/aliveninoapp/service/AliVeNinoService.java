@@ -11,4 +11,5 @@ public interface AliVeNinoService {
     List<AliVeNinoResponseDto> getAllLibraf();
     void deleteLibrafById(Long id);
     void addLibraf(AliVeNinoRequestDto dto);
+    void updateAlino(Long id,AliVeNinoRequestDto dto);
 }

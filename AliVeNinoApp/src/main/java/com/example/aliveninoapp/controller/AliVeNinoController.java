@@ -33,4 +33,9 @@ public class AliVeNinoController {
 
         aliVeNinoService.deleteLibrafById(id);
     }
+    @PutMapping("{id}")
+    public void updateLibraf(@PathVariable Long id, @RequestBody AliVeNinoRequestDto dto) {
+        aliVeNinoService.updateAlino(id, dto);
+    }
+
 }
