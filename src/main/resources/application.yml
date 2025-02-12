@@ -1,10 +1,18 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5433/postgres
-    username: postgres
-    password: password
-    driver-class-name: org.postgresql.Driver
+version: '3.8'
 
-  jpa:
-    hibernate:
-      ddl-auto: update
+services:
+  postgres:
+    image: postgres:latest
+    container_name: my_postgres
+    restart: always
+    environment:
+      username: postgres
+      password: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+
+volumes:
+  postgres_data:
