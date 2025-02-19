@@ -80,7 +80,7 @@ private OtpEntity sendFirstTime(String msisdn) {
 private OtpResponse ordinarySendOtp(OtpEntity otpData){
         otpData.setSmsCount(otpData.getSmsCount()+1);
         otpData.setStatus(OtpStatus.Pending);
-//        otpData.setExpiredTime(LocalDateTime.now().plusMinutes(5));
+       otpData.setExpiredTime(LocalDateTime.now().plusMinutes(20));
         otpData.setOtpCode(otpGenerate.generateOtpResponse());
         OtpEntity entity=repository.save(otpData);
         client.sendSms(otpData.getMsisdn(),entity.getOtpCode());

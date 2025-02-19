@@ -1,18 +1,30 @@
-version: '3.8'
+spring:
 
-services:
-  postgres:
-    image: postgres:latest
-    container_name: my_postgres
-    restart: always
-    environment:
-      username: postgres
-      password: password
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+  datasource:
+    url: jdbc:postgresql://localhost:5499/dma_db
+    username: dma_user
+    password: 123456789
 
-volumes:
-  postgres_data:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  redis:
+    lettuce:
+      pool:
+        max-connections: 10
+        min-connections: 2
+      # max-idle ve min-idle yerine, max-wait yerine wait-timeout kullanıyoruz
+      wait-timeout: 2000  # Maksimum bekleme süresi (ms)
+
+    # Redis bağlantı ayarları
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: ""
+      timeout: 60000
+
+server:
+  port: 8085

@@ -23,6 +23,7 @@ public class OtpEntity {
     private String msisdn;
     private OtpStatus status;
     private Integer smsCount;
+    private Integer verifyCount;
     @CreationTimestamp
     private LocalDateTime createdTime;
    @UpdateTimestamp
